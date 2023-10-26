@@ -3,20 +3,10 @@ import { Link } from "react-router-dom";
 import MovieDetail from "../modal/MovieDetail";
 
 const MovieCard = ({ movie }) => {
-  useEffect(()=>{
     const url= movie.url
-    const id = url.substring(url.length-2)
-    setId(id)
-  },[])
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [id, setId] = useState(false)
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
+    const id = url.split("/")[5]
+    
+  
 
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 pb-5">
@@ -42,6 +32,7 @@ const MovieCard = ({ movie }) => {
               pathname: "/detail/"+id,
               movie: movie,
             }}
+            key={id}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Detail
